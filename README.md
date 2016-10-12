@@ -4,5 +4,5 @@ Slack bot that posts the daily menu of [Carinas Kök](http://carinaskok.se/) and
 
 Invoke manually from the same directory, or with cron:
 
-```30 11 * * * Mon-Fri cd /path/to/script/; /usr/bin/chronic ./lunchbot.py```
+```30 11 * * Mon-Fri cd /path/to/script/; /usr/bin/chronic ./lunchbot.py```
 
