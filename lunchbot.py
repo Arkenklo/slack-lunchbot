@@ -19,10 +19,10 @@ eriksOutput, error = eriksProcess.communicate()
 
 # Post to Slack channel
 print sc.api_call(
-        "chat.postMessage", channel="#robert-private", text="Dagens på Carinas: " + carinasOutput,
-        username='lunchbot', icon_emoji=':semla:'
+        "chat.postMessage", channel=vars.channel, text="Dagens lunch på Carinas restaurang: " + carinasOutput,
+        username=vars.username, icon_emoji=vars.icon_emoji
 )
 print sc.api_call(
-        "chat.postMessage", channel="#robert-private", text="Dagens på Eriks: " + eriksOutput,
-        username='lunchbot', icon_emoji=':semla:'
+        "chat.postMessage", channel=vars.channel, text="Dagens lunch på Eriks restaurang: " + eriksOutput,
+        username=vars.username, icon_emoji=vars.icon_emoji
 )
