@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 from slackclient import SlackClient
 import subprocess
+import vars
 
-token = "my-token"      # found at https://api.slack.com/web#authentication
-sc = SlackClient(token)
+sc = SlackClient(vars.token)
 
 # Define external commands
 carinasCommand = "./carinas.sh"
