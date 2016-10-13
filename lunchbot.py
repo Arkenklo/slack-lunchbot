@@ -3,6 +3,7 @@
 from slackclient import SlackClient
 import subprocess
 import vars
+import time
 
 sc = SlackClient(vars.token)
 
@@ -22,6 +23,9 @@ print sc.api_call(
         "chat.postMessage", channel=vars.channel, text="Dagens lunch på Carinas restaurang: " + carinasOutput,
         username=vars.username, icon_emoji=vars.icon_emoji
 )
+# Wait for message to be read by Gitt
+time.sleep(10)
+# Post to Slack channel
 print sc.api_call(
         "chat.postMessage", channel=vars.channel, text="Dagens lunch på Eriks restaurang: " + eriksOutput,
         username=vars.username, icon_emoji=vars.icon_emoji
