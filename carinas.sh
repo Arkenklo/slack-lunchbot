@@ -2,18 +2,22 @@
 idag="$(LC_ALL=sv_SE.UTF-8 date +%A)"
 
 function convert {
-pdftotext /tmp/carinas.pdf - | grep --color=never -A 1 -i $idag | grep -i -v $idag | sed "s/^ *//"
+pdftotext /tmp/carinas.pdf - 2>/dev/null | grep --color=never -A 1 -i $idag | grep -i -v $idag | sed "s/^ *//" 2>/dev/null
+}
+
+function check_pdf {
+output=$(convert)
+if [ ! -z "$output" ]; then
+	echo $output
+	exit
+fi
 }
 
 wget -q -O /tmp/carinas.pdf http://carinaskok.se/files/meny-v.-$(date +%W).pdf
-output=$(convert)
-if [ ! -z "$output" ]; then exit; fi
+check_pdf
 
 wget -q -O /tmp/carinas.pdf http://carinaskok.se/files/meny-v.$(date +%W).pdf
-output=$(convert)
-if [ ! -z "$output" ]; then exit; fi
+check_pdf
 
 wget -q -O /tmp/carinas.pdf http://carinaskok.se/files/meny-v.$(date +%W)-1.pdf
-output=$(convert)
-if [ ! -z "$output" ]; then exit; fi
-
+check_pdf
