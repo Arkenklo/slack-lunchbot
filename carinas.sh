@@ -9,7 +9,7 @@ function check_pdf {
 output=$(convert)
 if [ ! -z "$output" ]; then
 	echo $output
-	exit
+	exit 0
 fi
 }
 
@@ -21,3 +21,4 @@ check_pdf
 
 wget -q -O /tmp/carinas.pdf http://carinaskok.se/files/meny-v.$(date +%W)-1.pdf
 check_pdf
+exit 1
