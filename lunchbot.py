@@ -19,12 +19,15 @@ carinasOutput, error = carinasProcess.communicate()
 #eriksOutput, error = eriksProcess.communicate()
 
 # Post to Slack channel
-print sc.api_call(
-        "chat.postMessage", channel=vars.channel, text="Dagens lunch på Carinas restaurang: " + carinasOutput,
-        username=vars.username, icon_emoji=vars.icon_emoji
-)
+if carinasOutput:
+	print sc.api_call(
+	        "chat.postMessage", channel=vars.channel, text="Dagens lunch på Carinas restaurang: " + carinasOutput,
+	        username=vars.username, icon_emoji=vars.icon_emoji
+	)
+
 # Wait for message to be read by Gitt
 #time.sleep(10)
+
 # Post to Slack channel
 #print sc.api_call(
 #        "chat.postMessage", channel=vars.channel, text="Dagens lunch på Eriks restaurang: " + eriksOutput,
