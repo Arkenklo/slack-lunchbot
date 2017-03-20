@@ -14,6 +14,9 @@ if [ ! -z "$output" ]; then
 fi
 }
 
+wget -q -O /tmp/carinas.pdf http://carinaskok.se/files/meny-v.-$WEEK-2.pdf
+check_pdf
+
 wget -q -O /tmp/carinas.pdf http://carinaskok.se/files/meny-v.-$WEEK-1.pdf
 check_pdf
 
